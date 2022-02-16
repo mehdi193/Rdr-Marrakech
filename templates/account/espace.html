@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+  {% load static %}
+ <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link  href="{% static 'css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}"  rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+{% include 'header.html'%}
+ <main class="charity-01-main">
+    <section class="abt-01">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="heading-wrapper">
+              <h3>Espace Utilisateur</h3>
+              <ol>
+                 <li><a href="{% url 'home' %}" style="color:white;">Accueil</a><i>/</i></li>
+                <li>Espace Utilisateur</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ </main>
+
+<div class="container mt-5">
+  <h2>Espace utilisateur</h2>
+  <br>
+<div class="container">
+    <div class="row">
+
+<div class="col-sm-4">
+    <ul class="nav flex-column nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Informations personelles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">Commandes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu2">Changer Mot de passe</a>
+    </li>
+        <li class="nav-item">
+      <a class="nav-link"  href="{% url 'logout' %}">Déconnecter</a>
+    </li>
+  </ul>
+</div>
+<div class="col-sm">
+     <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+        <h3>Vos informations personelles :</h3>
+        <form method="post">
+            {% csrf_token %}
+  <div class="form-group">
+    <label for="uname">Nom:</label>
+    <input type="text" class="form-control" id="uname" value="{{ u.last_name }}" placeholder="Enter votre nom" name="lname" required>
+     <label for="uname">Prenom:</label>
+    <input type="text" class="form-control" id="uname" value="{{ u.first_name }}" placeholder="Enter votre prenom" name="fname" required>
+      <label for="uname">Email:</label>
+    <input type="email" class="form-control" id="uname" value="{{ u.email }}" placeholder="Enter votre email" name="email" required>
+   <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Username:</label>
+    <input type="text" class="form-control" id="pwd" value="{{ u.username }}" placeholder="Enter votre username" name="pswd" required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Changer</button><br>
+
+</form>
+
+
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+    <h3>Vos commandes :</h3>
+
+
+
+
+
+
+     <main class="charity-01-main">
+
+    <!-- ============abt-01 Section  Start============ -->
+
+
+
+
+<div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+
+
+          {% csrf_token %}
+            <div class="site-blocks-table">
+
+              <table class="table table-bordered">
+                  {% if pr %}
+                       <thead>
+                  <tr>
+                    <th class="product-thumbnail">Image</th>
+                    <th class="product-name">Produit</th>
+                    <th class="product-price">Prix</th>
+                    <th class="product-quantity">Quantité</th>
+                    <th class="product-total">Total</th>
+                    <th class="product-total">Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+
+
+    {% for i in pr %}
+                  <tr>{{ a.idProduit.nom}}
+            {{ a.qte}}
+                    <td class="product-thumbnail">
+                      <img src="{% static i.idProduit.image %} "alt="Image" class="img-fluid" style="margin: -15%; height: 80px;">
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{ i.idProduit.nom}}</h2>
+                    </td>
+                    <td>{{i.idProduit.prix}}</td>
+                    <td>
+
+
+
+                        <label >{{ i.qte }}</label>
+
+
+
+                    </td>
+                    <td>{% widthratio i.idProduit.prix  1 i.qte%}</td>
+
+
+                    <td>{{ i.idCommande.type }}
+                    </td>
+
+                  </tr>
+{% endfor %}
+
+                      {% else %}
+              <span style="width: 100%" class="btn btn-info"><h3><span class="glyphicon glyphicon-info-sign">
+              Vous n'avez pas passé aucune commande   .
+              </h3></span>&nbsp;
+
+
+              </span>
+                      <br>
+                      <br><a class="btn btn-primary" id="ach" href="{% url 'allproduit' %}">RETOURNER À LA BOUTIQUE</a>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+
+
+
+
+
+                {% endif %}
+
+                </tbody>
+              </table>
+            </div>
+        </div>
+</div></div></main>
+
+
+
+
+
+    </div>
+
+
+    <div id="menu2" class="container tab-pane fade"><br>
+      <h3>Changer votre mot de passe :</h3><br>
+        <form action="" method="get">
+            {% csrf_token %}
+<table>
+    <tr>
+        <td>Ancien mot de passe : </td>
+        <td>{{ form.old_password }}</td>
+    </tr>
+    <tr>
+        <td> Nouveau mot de passe : </td>
+        <td>{{form.new_password1}}</td>
+    </tr>
+    <tr>
+        <td> Confirmation du nouveau mot de passe : </td>
+        <td>{{form.new_password2}}</td>
+    </tr>
+
+</table>
+
+   <br>
+
+    <center><input class="btn btn-primary" value="Changer" type="submit"></center>
+
+        </form>
+    </div>
+
+  </div>
+</div>
+</div></div>
+</div>
+
+  <!-- Nav tabs -->
+
+
+  <!-- Tab panes -->
+
+{% include 'footer.html' %}
+
+</body>
+</html>

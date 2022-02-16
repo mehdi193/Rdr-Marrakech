@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+<link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link  href="{% static 'css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}"  rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+	<body>
+<!--begin nv -->
+
+
+{% include 'header.html' %}
+  <!-- ======== main started ========= -->
+
+  <main >
+      <!-- ======== banner started ========= -->
+                                           <form method="POST" class="login-form">
+{% csrf_token %}
+    <section class="banner" style="color:blue;" >
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="wrapper">
+              <div class="content">
+                  	<section class="ftco-section">
+		<div class="container">
+
+			<div class="row justify-content-center">
+
+					<div class="login-wrap p-4 p-md-5">
+		      	<div class="icon d-flex align-items-center justify-content-center">
+		      		<span class="fa fa-user-o"></span>
+		      	</div>
+
+
+		      		<div class="form-group">{{pr}}
+                        <center>
+                            <label style="color: black">Nom</label><br>
+                        </center>
+		      			<input type="text" name="username" class="form-control rounded-left" placeholder="Votre nom" required>
+		      		</div><center>
+                        <label  style="color: black">Mot de passe</label>
+                    </center>
+	            <div class="form-group d-flex">
+
+	              <input type="password" name="password" class="form-control rounded-left" placeholder="Votre mot de passe" required>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+	            		<label class="checkbox-wrap checkbox-primary">Se souvenir de moi
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="w-50 text-md-right">
+									<a href="{% url 'inscription' %}">Inscription</a>
+								</div>
+	            </div>
+	            <div class="form-group">
+	            	<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Get Started</button>
+	            </div>
+
+	        </div>
+				</div>
+			</div>
+
+	</section>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="img-wrapper">
+              <div class="banner-img">
+                <img src="{% static 'mu.png'%}">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ </form>
+
+
+
+
+    <!-- ========bg-05 started ========= -->
+
+
+  </main>
+
+{% include 'footer.html' %}
+</body>
+
+
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
+</html>

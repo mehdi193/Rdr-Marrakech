@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+     {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+
+<link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link  href="{% static 'css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}"  rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	</head>
+
+	<body>
+<!--begin nv -->
+
+
+ {% include 'header.html' %}
+    <!-- END nav -->
+
+
+
+
+
+
+
+
+
+
+
+     <main class="charity-01-main">
+
+        <section class="abt-01">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading-wrapper">
+                        <h3>Blog</h3>
+                        <ol>
+                             <li><a href="{% url 'home' %}" style="color:white;">Accueil</a><i>/</i></li>
+                            <li>Blog</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<br>
+
+    <!-- ======== bg-02-b started ========= -->
+
+
+
+    <section class="bg-03" style="background-color: white">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="head-01">
+              <h2>Latest news</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+        </div> <div class="row">
+
+{% for blog in b %}
+
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <article class="_kl_cd">
+              <div class="">
+
+            <img src="{% static blog.image %}">
+
+
+              </div>
+              <div class="_oi_er_we">
+                <h3>{{ blog.titre}}</h3>
+                <p>{{ blog.text|truncatewords:"10" }} <a href="{% url 'singleBlog' blog.id %}">Read More</a></p>
+              </div>
+            </article>
+          </div>
+
+
+
+
+{% endfor %}
+          </div>
+      </div>
+    </section>
+
+    <!-- ========bg-05 started ========= -->
+
+
+  </main>
+
+{% include 'footer.html' %}
+	</body>
+</html>
+

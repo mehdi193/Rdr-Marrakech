@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+  <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link  href="{% static 'css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}"  rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+	<body>
+<!--begin nv -->
+{% include 'header.html' %}
+
+<i class="far fa-check-circle"></i>
+ <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <span class="icon-check_circle display-3 text-success"></span>
+            <h2 class="display-3 text-black">Merci!</h2>
+            <p class="lead mb-5">Votre commande a été complétée avec succès.</p>
+            <p><a href="{% url 'allproduit' %}"  class="btn btn-sm btn-primary">Retour à la boutique</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+<br>
+
+
+{% include 'footer.html' %}
+</body>
+</html>

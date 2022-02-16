@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+
+ <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link  href="{% static 'css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}"  rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+	<body>
+<!--begin nv -->
+{% include 'header.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-12">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-5 mb-md-0">
+            <h2 class="h3 mb-3 text-black">Billing Details</h2>
+            <div class="p-3 p-lg-5 border">
+              <div class="form-group">
+                <label for="c_country" class="text-black">Country :</label>
+                <label for="c_country" class="text-black">Morocco </label>
+
+              </div>
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="c_fname" class="text-black">First Name :</label>
+                  <label for="c_fname" class="text-black">{{ com.idCommande.first }}</label>
+                </div>
+                <div class="col-md-6">
+                  <label for="c_fname" class="text-black">Last Name :</label>
+                  <label for="c_fname" class="text-black">{{ com.idCommande.last }} </label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                 <label for="c_fname" class="text-black">Address :</label>
+                  <label for="c_fname" class="text-black">{{ com.idCommande.adresse }}</label>
+                </div>
+              </div>
+
+
+
+              <div class="form-group row">
+                <div class="col-md-6">
+
+                     <label for="c_fname" class="text-black">State / Country :</label>
+                  <label for="c_fname" class="text-black">{{ com.idCommande.region }} </label>
+
+                </div>
+                <div class="col-md-6">
+
+                     <label for="c_fname" class="text-black">Posta / Zip :</label>
+                  <label for="c_fname" class="text-black">{{ com.idCommande.postal }} </label>
+                </div>
+              </div>
+
+              <div class="form-group row mb-5">
+                <div class="col-md-6">
+                  <label for="c_email_address" class="text-black">Email Address </label>
+                  <label for="c_email_address" class="text-black">{{ com.idUser.email }} </label>
+
+                </div>
+                <div class="col-md-6">
+
+                     <label for="c_fname" class="text-black">Phone :</label>
+                  <label for="c_fname" class="text-black">{{ com.idCommande.phone }} </label>
+                </div>
+              </div>
+
+
+
+
+
+            {% if com.idCommande.notes != "" %}
+              <div class="form-group">
+                <label for="c_order_notes" class="text-black">Order Notes: </label>
+                <label for="c_order_notes" class="text-black">{{com.idCommande.notes }} </label>
+              </div>
+
+
+                {% else %}
+
+                 <label for="c_order_notes" class="text-black">Order Notes: </label>
+                <label class="text-black"> there is no notes</label>
+                {% endif %}
+
+            </div>
+          </div>
+          <div class="col-md-6">
+
+
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h2 class="h3 mb-3 text-black">Your Order</h2>
+                <div class="p-3 p-lg-5 border">
+                   <table class="table site-block-order-table mb-5">
+                    <thead>
+                      <th>Product</th>
+                      <th>Total</th>
+                    </thead>
+                    <tbody>
+
+                    {% for i in objet %}
+                      <tr>
+                        <td>{{ i.idP.nom }} <strong class="mx-2">x</strong> {{ i.idPa.qte }}</td>
+                        <td>{% widthratio i.idP.prix  1 i.idPa.qte%}$</td>
+                      </tr>
+
+                    {% endfor %}
+
+                      <tr>
+                        <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                        <td class="text-black font-weight-bold"><strong>{{total}} $</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+<a id="a" href="{% url 'delivery' %}" class="btn btn-secondary">Cash On Delivery</a>
+                    <br>
+                    <br>
+
+                     <div id="paypal-button-container"></div>
+                     <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&locale=en_MA"></script>
+
+
+
+
+
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- </form> -->
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+</body>
+
+<style>
+    #a{
+         color:  white;
+                shape:  pill;
+                label:  pay;
+                width: 100%;
+        border-radius: 40px;
+    }
+</style>
+
+
+<script>
+        // Render the PayPal button into #paypal-button-container
+var url= "{% url 'payement_complete' %}"
+        function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+        paypal.Buttons({
+  style: {
+                color:  'blue',
+                shape:  'pill',
+                label:  'pay',
+                height: 40
+            },
+
+           createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: {{total}}
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                     sendData()
+
+                    function sendData(){
+                        fetch(url,{
+                            method:'POST',
+                            headers:{
+                                "Conten-type":"application/json",
+                                "X-CSRFToken":csrftoken
+
+
+                            },
+                            body:JSON.stringify({'payID':orderData.id,'status':orderData.status})
+                        })
+                    }
+                    //alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                    window.location.assign("/thank")
+
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+
+    </script>
+
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
+
+</html>

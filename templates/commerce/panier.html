@@ -1,0 +1,234 @@
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+
+<link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link  href="{% static 'css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}"  rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+	<body>
+<!--begin nv -->
+{% include 'header.html' %}
+  <!-- ======== main started ========= -->
+
+  <main class="charity-01-main">
+
+    <!-- ============abt-01 Section  Start============ -->
+
+    <section class="abt-01">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="heading-wrapper">
+              <h3>Panier</h3>
+              <ol>
+                 <li><a href="{% url 'home' %}" style="color:white;">Accueil</a><i>/</i></li>
+                <li>Panier</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== bg-02-b started ========= -->
+
+<br>
+
+
+<div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+
+              <table class="table table-bordered"> {% if 'user_id' in request.session %}
+                  {% if pr %}
+                       <thead>
+                  <tr>
+                    <th class="product-thumbnail">Image</th>
+                    <th class="product-name">Product</th>
+                    <th class="product-price">Price</th>
+                    <th class="product-quantity">Quantity</th>
+                    <th class="product-total">Total</th>
+                    <th class="product-remove">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+
+                <form method="post"> {% csrf_token %}
+    {% for i in pr %}
+                  <tr>
+                    <td class="product-thumbnail">
+                      <img src="{% static i.idP.image %} "alt="Image" class="img-fluid" style="margin: -15%;height: 220px;">
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{ i.idP.nom}}</h2>
+                    </td>
+                    <td>{{i.idP.prix}}</td>
+                    <td>
+
+                      <div class="input-group mb-3" style="max-width: 120px;">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                        </div>
+
+                          <input type="text" class="form-control text-center" name="qte" value="{{ i.idPa.qte }}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                        </div>
+                      </div>
+
+                    </td>
+                    <td>{% widthratio i.idP.prix  1 i.idPa.qte%}</td>
+                    <td><a href="{% url 'dpanier' i.id %}" class="btn btn-primary btn-sm">X</a>
+
+
+                    </td>
+
+                  </tr>
+{% endfor %}
+
+</form>
+                      {% else %}
+              <span style="width: 90%" class="btn btn-info"><h3><span class="glyphicon glyphicon-info-sign"></span>&nbsp; Votre panier est actuellement vide.
+                  </h3>
+              </span>
+                      <br>
+                      <br>
+                      <br><a class="btn btn-primary" id="ach" href="{% url 'allproduit' %}">RETOURNER À LA BOUTIQUE</a>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      {% endif %}
+
+                    {% elif list %}
+
+<thead>
+                  <tr>
+                    <th class="product-thumbnail">Image</th>
+                    <th class="product-name">Produit</th>
+                    <th class="product-price">Prix</th>
+                    <th class="product-quantity">Quantité</th>
+                    <th class="product-total">Total</th>
+                    <th class="product-remove">Supprimer</th>
+                  </tr>
+                </thead>
+               {% for pr,qte in zipped %}
+
+
+                  <tr>
+                    <td class="product-thumbnail">
+                      <img src="{% static pr.image %} "alt="Image" class="img-fluid" style="margin: -15%; height: 220px;">
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{pr.nom}}</h2>
+                    </td>
+                    <td>{{pr.prix}}</td>
+                    <td>
+
+
+
+<center>
+
+     <label style="text-align: center"> {{ qte }}</label>
+</center>
+
+
+
+
+                    </td>
+                    <td>{% widthratio pr.prix  1 qte%} </td>
+                    <td><a href="{% url 'dpanier' pr.id %}" class="btn btn-primary btn-sm">X</a>
+
+
+                    </td>
+
+                  </tr>
+
+{% endfor %}
+                  </table>
+                   <a class="btn btn-primary" id="ach" href="{% url 'commande' %}">Payer maintenant</a>
+                    {% else %}
+                  <span class="glyphicon glyphicon-info-sign"></span><h3>Votre panier est vide</h3>
+                {% endif %}
+
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+</div></div></main>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+
+    </div>
+{% if pr %}
+    <div class="col">
+       <div class="col-md-14 pl-2">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-12 text-right border-bottom mb-5">
+                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                  </div>
+                </div>
+                <div class="row mb-8">
+
+
+                </div>
+                <div class="row mb-5">
+                  <div class="col-md-6">
+                    <span class="text-black">Total</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black">{{total}} $</strong>
+                  </div>
+                </div>
+
+                  <a class="btn btn-primary" id="ach" href="{% url 'commande' %}">Payer maintenant</a>
+                  {% endif %}
+    </div>
+  </div>
+</div></div></div></div>
+<br>
+<br>
+<br>{{ request.user_id }}
+{% include 'footer.html' %}
+</body>
+
+
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
+
+</html>

@@ -1,0 +1,140 @@
+<html lang="en">
+
+<head>
+    {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+
+  <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link  href="{% static 'css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}"  rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+	<body>
+<!--begin nv -->
+{% include 'header.html' %}
+
+  <!-- ======== main started ========= -->
+
+  <main class="charity-01-main">
+
+    <!-- ============abt-01 Section  Start============ -->
+
+    <section class="abt-01">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading-wrapper">
+                        <h3>Contacter Nous</h3>
+                        <ol>
+                             <li><a href="{% url 'home' %}" style="color:white;">Accueil</a><i>/</i></li>
+                            <li>Contacter Nous</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<form method="post">
+    {% csrf_token %}
+     <section class="bg-0-b">
+         <div class="container">
+             <div class="row">
+                 <div class="main-card-contact d-flex">
+                     <div class="sup-card-contact">
+                         <div class="sup-content">
+                             <div class="head-content">
+                                 <h2>Laissez un message ici</h2>
+                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, neque ipsam obcaecati
+                                     quis vitae odit aliquid libero sapiente possimus. Distinctio, qui voluptatibus </p>
+                             </div>
+
+                             <div class="contact-title">
+                                 <h2>Détails du contact</h2>
+                                 <ol>
+                                     <li><i class="fa fa-location-arrow" aria-hidden="true"></i></i>Maroc</li>
+                                     <li><i class="fa fa-phone" aria-hidden="true"></i></i>+212 5244-48737 </li>
+                                     <li> <a class="social-icon" data-tooltip="email@gmail.com" href="">
+    <i class="fa fa-envelope" aria-hidden="true"></i>
+  </a>salerdr@gmail.com</li>
+                                    </ol>
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="sup-card-contact-0a">
+                         <div class="contact-a1">
+                             <form>
+                                 <div class="dived d-flex">
+                                     <div class="form-group">
+                                         <div class="form-sup">
+                                             <div class="cal-01">
+                                                 <input type="name" required name="name" id="" class="form-control"
+                                                     placeholder="Entrer votre nom">
+
+                                             </div>
+
+                                             <div class="cal-01">
+                                                 <input type="phone" name="phone" required id="" class="form-control"
+                                                     placeholder="Phone Number">
+
+                                             </div>
+                                         </div>
+                                     </div>
+
+                                     <div class="form-group">
+                                         <div class="form-sup">
+                                             <div class="cal-01">
+                                                 <input type="email" required name="email" id="" class="form-control"
+                                                     placeholder="Entrer votre Email">
+
+                                             </div>
+                                             <div class="cal-01">
+                                                 <input type="text" required name="subject" id="" class="form-control"
+                                                     placeholder="Entrer votre Sujet">
+
+                                             </div>
+                                         </div>
+                                     </div>
+
+                                     <div class="ca-ool">
+                                         <textarea name="message" cols="80" rows="6" class="form-control"
+                                             placeholder="Message"></textarea>
+                                     </div><br>
+
+
+                                 </div><center><button class="btn btn-primary" type="submit">
+                                         Envoyer</button>
+                                    </center>
+                             </form>
+                         </div>
+                     </div>
+
+                 </div>
+             </div>
+         </div>
+     </section>
+</form>
+     <section class="mab-01">
+         <iframe style="width:100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.6548485766057!2d-
+         8.014793749760369!3d31.643299354443233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafee9b510e629d%
+         3A0xf9f7e556ae1f5c15!2sRue%20Ibn%20Qodama%2C%20Marrakech%2040000!5e0!3m2!1sen!2sma!4v1634244858709!5m2!1sen
+         !2sma" height="450" frameborder="0" allowfullscreen=""></iframe>
+     </section>
+  </main>
+
+{% include 'footer.html' %}
+</body>
+
+
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
+</html>
